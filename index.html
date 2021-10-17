@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+     <link rel="stylesheet" href="style.css">
+    <title>MUSIC-PLAYER BY adithya shetty!</title>
+  </head>
+  <body>
+     <div class="container-fluid m-0 py-5">
+         <div class="row m-0  d-flex justify-content-center align-items-center ">
+              <div class="col-10 bor py-5 pb-2 mt-md-5 music_container  col-sm-6 col-md-3 text-center ">
+                <h2 id="title" class="mb-3">Hook Up Song</h2>
+                <h4 id="artist">Tiger Shroff</h4>
+            <div class="container  p-0 my-3 mt-5" >
+                <img src="img/hook up.jpg" class="img-fluid  " alt="" style="height: 25rem; width: 25rem; max-width:25rem ; max-height: 25rem;">
+            </div>
+            <audio src="audio/Hook_Up_Song_Tiger_Shroff_.mpeg"></audio>
+            <!-- controls -->
+            <div class="music_controls ">
+                <i class="fas fa-backward" id="prev" title="previous"></i>
+                <i class="fas fa-play main_btn " id="main_btn"></i>
+                <i class="fas fa-forward" id="next" title="next"></i>
+
+            </div>
+              </div>
+
+         </div>
+     </div>
+
+       <script>
+
+         let main_btn=document.getElementById("main_btn");
+         let img=document.querySelector("img");
+         let audio=document.querySelector("audio");
+ 
+         let prev=document.getElementById("prev");
+         let next=document.getElementById("next");
+
+         let title=document.getElementById("title");
+         let artist=document.getElementById("artist");
+
+
+   
+
+
+
+
+        isplaying=false;
+  
+            //  to pauseMUsic
+            const pausemusic = ()=>{
+                 isplaying=false;
+                 audio.pause();
+                 main_btn.classList.replace("fa-pause","fa-play")
+                 img.classList.remove("anime"); 
+            }
+            //  to playMUsic
+              const playmusic =()=>{
+                isplaying=true;
+                audio.play();
+                main_btn.classList.replace("fa-play","fa-pause")
+                img.classList.add("anime");
+                 
+            }
+
+          main_btn.addEventListener('click', ()=>
+          {
+            //   if(isplaying)
+            //   {
+            //     pausemusic();
+                
+            //   }else{
+               
+            //     playmusic();
+            //   }
+
+              isplaying ? pausemusic() : playmusic();
+
+          })
+
+
+          songs=[
+        {
+            title:"Hook Up Song",
+            artist:"Tiger Shroff",
+            img:"hook up",
+            audio:"Hook_Up_Song_Tiger_Shroff_"
+         },
+         {
+            title:" O SAKI SAKI",
+            artist:"Nora Fatehi",
+            img:"saki saki img",
+            audio:"_O_SAKI_SAKI__Nora_Fatehi,"
+         },
+         {
+            title:" Nadiyon Paar Song",
+            artist:"Janhvi Kapoor",
+            img:"nadiyona par",
+            audio:"Nadiyon_Paar_Roohi__Janhvi_Kapoor_Sachin-Jigar__"
+         },
+         {
+            title:" COCA COLA Song",
+            artist:"Neha Kakkar",
+            img:"CocaColaimage",
+            audio:"_COCA_COLA_Song_Tony_Kakkar_Neha_Kakkar"
+         },
+        
+         {
+            title:"FILHALL",
+            artist:"Akshay Kumar",
+            img:"Fillgallimg",
+            audio:"FILHALL__Akshay_Kumar"
+         }, 
+          {
+            title:"MADE IN INDIA",
+            artist:"Bhushan Kumar",
+            img:"madinindia img",
+            audio:"_MADE_IN_INDIA__Bhushan_Kumar_"
+         },
+        
+         {
+            title:" Dhvani Song",
+            artist:"Bhanushali",
+            img:"images-2",
+            audio:"_Dhvani_Bhanushali,_"
+         },{
+            title:" Mungda Song",
+            artist:"Gourov Roshin",
+            img:"mungda",
+            audio:"Mungda__Full_Song Gourov-Roshin"
+         },
+        
+          {
+            title:" Tere Sang Yaara Song",
+            artist:"Akshay Kumar",
+            img:"Rustomimg",
+            audio:"Tere_Sang_Yaara___Akshay_Kumar_"
+         },
+          {
+            title:" Dil Galti Kar Song",
+            artist:"Neha Kakkar",
+            img:"Dil Galti Kar Baits",
+            audio:"Dil_Galti_Kar_BaithFt._Jubin_Nautiyal__Mouni_Ro"
+         },
+       
+        
+         {
+            title:"Chamma_Chamma",
+            artist:"Fraud Saiyaan",
+            img:"Chamma chamma",
+            audio:"Chamma_Chamm_Fraud_Saiyaan_,"
+         }
+
+        ]
+
+       
+
+  let songload=(songs)=>{
+        title.textContent=songs.title;
+        artist.textContent=songs.artist;
+        audio.src="audio/"+songs.audio+".mpeg";
+        img.src="img/"+songs.img+".jpg";
+
+  }
+
+        // songload(songs[1]);
+       songsindex=0;
+
+       let prevsong =()=>{
+        songsindex= (songsindex - 1+ songs.length)% songs.length;
+              songload(songs[songsindex]);
+              playmusic();
+       };
+
+       let nextsong = ()=>{
+              songsindex= (songsindex + 1)% songs.length;
+              songload(songs[songsindex]);
+              playmusic();
+       };
+
+
+
+        prev.addEventListener('click', prevsong);
+        next.addEventListener('click',nextsong);
+
+
+       </script>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
