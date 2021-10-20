@@ -18,9 +18,12 @@ html{
     border-radius: 20px;
 }
 .music_container{
+    box-shadow: 1px 0px 12px 5px rgba(191,184,184,0.75);
+    -webkit-box-shadow: 1px 0px 12px 5px rgba(191,184,184,0.75);
+    -moz-box-shadow: 1px 0px 12px 5px rgba(191,184,184,0.75);
     
     /* background-color: #f6f6f6; */
-    background-color: #ffefef;
+    background-color: #FEFBF3;
    
 }
 .music_controls{
@@ -77,15 +80,78 @@ img{
 
 /* creating a class */
 
+
+
 .anime{
-   animation: roatate 3s linear infinite;
+  animation: roatateimg 3s linear  infinite;
 }
 
-@keyframes roatate {
-    from {
-        transform: rotate(0deg);
+@keyframes roatateimg{
+   
+     from{
+     transform: rotate(0deg); 
+     }
+     to{
+     transform: rotate(360deg);
+
+
+    
+     }
+    
+ 
+}
+
+/* .rotate{
+  animation: roatatecontainer .2s linear  infinite;
+
+}
+
+@keyframes roatatecontainer{
+    from{
+   transform: rotate(0deg);
     }
-    to {
-         transform: rotate(360deg);
-        }
-  }
+    to{
+    transform: rotate(360deg);
+    }
+} */
+.progressbar_container{
+    width: 90%;
+    height: auto;
+    padding: 0.5rem 0;
+    margin-top:1rem;
+    margin: auto;
+   }
+
+
+.progress_div{
+    width:100%;
+    height: 0.5rem;
+    border-radius: 4rem;
+    position: relative;
+    margin-top: 0.5rem;
+    transition: all 0.4s linear;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07) , 0 1px 2px rgba(0, 0, 0, 0.07),0 1px 2px rgba(0, 0, 0, 0.07),0 1px 2px rgba(0, 0, 0, 0.07);
+}
+.progress{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #000;
+    transition: all .1s linear;
+    cursor: pointer;
+}
+
+  .progress_duration_meter
+   {
+     display: flex;
+     justify-content: space-between;
+     font-size: 1.2rem;
+   }
+
+
+  
+
+
